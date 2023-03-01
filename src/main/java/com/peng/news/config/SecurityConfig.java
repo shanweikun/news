@@ -31,11 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * @author  PENG
- * @date  2021/3/23 14:04
- * @version 1.0
- */
+
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 

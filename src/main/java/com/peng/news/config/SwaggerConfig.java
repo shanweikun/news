@@ -3,7 +3,7 @@ package com.peng.news.config;
 /**
  * SwaggerConfig$
  *
- * @author shuai
+ * @author  shan
  * @date 2023/2/28$
  */
 

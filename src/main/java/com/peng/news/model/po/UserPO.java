@@ -8,11 +8,7 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 
-/**
- * @author  PENG
- * @date  2021/3/23 14:04
- * @version 1.0
- */
+
 @TableName("user")
 @Data
 public class UserPO {

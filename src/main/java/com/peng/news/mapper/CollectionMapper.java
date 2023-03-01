@@ -6,7 +6,7 @@ import com.peng.news.model.po.CollectionPO;
 /**
  * CollectionMapper$
  *
- * @author shuai
+ * @author  shan
  * @date 2023/2/28$
  */
 

@@ -12,11 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-/**
- * @author  PENG
- * @date  2021/3/23 14:04
- * @version 1.0
- */
+
 @Data
 public class UserVO implements UserDetails {
 
