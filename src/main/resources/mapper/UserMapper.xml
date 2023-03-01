@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peng.news.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="userVO" autoMapping="true">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="real_name" property="realName"/>
+        <result column="passwd" property="passwd"/>
+        <result column="gender" property="gender"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="description" property="description"/>
+        <result column="locked" property="locked"/>
+        <result column="deleted" property="deleted"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <resultMap id="ResultMapWithRoles" type="UserVO" extends="BaseResultMap">
+        <collection property="roles" column="id" ofType="RoleVO" select="com.peng.news.mapper.RoleMapper.getRolesByUserId"/>
+    </resultMap>
+    
+    <sql id="columnsWithoutPasswd">
+        id, username, real_name, gender, phone, email, description, locked, deleted, create_time, update_time
+    </sql>
+    
+    <select id="getUserByUsername" resultMap="ResultMapWithRoles">
+        select *
+        from user
+        where username=#{username} and deleted=0
+    </select>
+
+    <select id="getUserByUserId" resultMap="ResultMapWithRoles">
+        SELECT
+        <include refid="columnsWithoutPasswd"/>
+        FROM user
+        where id=#{userId} and deleted=0
+    </select>
+
+    <select id="selectUsersByPage" resultMap="ResultMapWithRoles">
+        select
+        <include refid="columnsWithoutPasswd"/>
+        from user
+        where deleted=0
+        <if test="userIdList != null and userIdList.size() != 0">
+            and id in
+            <foreach collection="userIdList" item="userId" separator="," open="(" close=")">
+                #{userId}
+            </foreach>
+        </if>
+        <if test="conditionBean.username != null">
+            and username like CONCAT('%', #{conditionBean.username}, '%')
+        </if>
+        <if test="conditionBean.realName != null">
+            and real_name like CONCAT('%', #{conditionBean.realName}, '%')
+        </if>
+        <if test="conditionBean.gender != null">
+            and gender = #{conditionBean.gender}
+        </if>
+        <if test="conditionBean.phone != null">
+            and phone like CONCAT('%', #{conditionBean.phone}, '%')
+        </if>
+        <if test="conditionBean.email != null">
+            and email like CONCAT('%', #{conditionBean.email}, '%')
+        </if>
+        <if test="conditionBean.locked != null">
+            and locked = #{conditionBean.locked}
+        </if>
+        order by create_time desc
+    </select>
+
+    <update id="softDelUser">
+        update user set deleted=true where id=#{userId}
+    </update>
+
+    <select id="getAdminIdSet" resultType="integer">
+        SELECT DISTINCT user_id
+        FROM user_role t1 join role t2 on t1.role_id=t2.id
+        where t2.is_system_admin = true
+    </select>
+
+</mapper>

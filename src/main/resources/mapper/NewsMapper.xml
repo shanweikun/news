@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.peng.news.mapper.NewsMapper">
+
+    <resultMap id="BaseResultMap" type="newsVO" autoMapping="true">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="articleFragmentForShow" column="article_fragment_for_show"/>
+        <result property="content" column="content"/>
+        <result property="imgSource" column="img_source"/>
+        <result property="articleSource" column="article_source"/>
+        <result property="newsStatus" column="news_status" javaType="com.peng.news.model.enums.NewsStatus" jdbcType="TINYINT" typeHandler="com.peng.news.mybatisTypeHandler.NewsStatusTypeHandler"/>
+        <result property="isCarousel" column="is_carousel"/>
+        <result property="setCarouselTime" column="set_carousel_time"/>
+        <result property="isHeadlines" column="is_headlines"/>
+        <result property="setHeadlinesTime" column="set_headlines_time"/>
+        <result property="isImageNews" column="is_image_news"/>
+        <result property="isTop" column="is_top"/>
+        <result property="setTopTime" column="set_top_time"/>
+        <result property="externalUrl" column="external_url"/>
+        <result property="createTime" column="create_time"/>
+        <result property="completeInputTime" column="complete_input_time"/>
+        <result property="editors" column="editors"/>
+        <result property="reviewers" column="reviewers"/>
+        <result property="submitTime" column="submit_time"/>
+        <result property="latestEditTime" column="latest_edit_time"/>
+        <result property="currentReviewEpoch" column="current_review_epoch"/>
+        <result property="previousEpochReviewPassTime" column="previous_epoch_review_pass_time"/>
+        <result property="realPubTime" column="real_pub_time"/>
+        <result property="showPubTime" column="show_pub_time"/>
+        <result property="initReadingCount" column="init_reading_count"/>
+        <result property="imgForShowOnNewsList" column="img_for_show_on_news_list"/>
+        <result property="realReadingCount" column="real_reading_count"/>
+        <result property="extra" column="extra"/>
+    </resultMap>
+
+    <resultMap id="ResultMapWithInputterAndLatestEditor" type="newsVO" extends="BaseResultMap">
+        <association property="inputter" column="inputter_id" select="com.peng.news.mapper.UserMapper.selectNameById"/>
+        <association property="latestEditor" column="latest_editor_id" select="com.peng.news.mapper.UserMapper.selectNameById"/>
+    </resultMap>
+
+    <resultMap id="ResultMapWithSubmitterAndLatestEditor" type="newsVO" extends="BaseResultMap">
+        <association property="submitter" column="submitter_id" select="com.peng.news.mapper.UserMapper.selectNameById"/>
+        <association property="latestEditor" column="latest_editor_id" select="com.peng.news.mapper.UserMapper.selectNameById"/>
+    </resultMap>
+
+    <resultMap id="ResultMapWithColumnAndPublisher" type="newsVO" extends="BaseResultMap">
+        <association property="column" column="column_id" select="com.peng.news.mapper.NewsColumnMapper.selectTitleAndWithParentById"/>
+        <association property="publisher" column="publisher_id" select="com.peng.news.mapper.UserMapper.selectNameById"/>
+    </resultMap>
+
+    <resultMap id="ResultMapWithColumn" type="newsVO" extends="BaseResultMap">
+        <association property="column" column="column_id" select="com.peng.news.mapper.NewsColumnMapper.selectTitleAndWithParentById"/>
+    </resultMap>
+
+    <select id="selectTransitNewsPage" resultMap="ResultMapWithInputterAndLatestEditor">
+        select id, title, external_url, news_status, editors, latest_editor_id, latest_edit_time, inputter_id, complete_input_time
+        from news
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectUnderReviewNewsPage" resultMap="ResultMapWithSubmitterAndLatestEditor">
+        select id, title, external_url, submitter_id, submit_time, latest_editor_id, latest_edit_time, previous_epoch_review_pass_time
+        from news
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectUnpublishedNewsList" resultMap="BaseResultMap">
+        select id, title, news_status, img_source, article_source, external_url, editors, reviewers, previous_epoch_review_pass_time, show_pub_time
+        from news
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectPublishedNewsList" resultMap="ResultMapWithColumnAndPublisher">
+        select id, title, external_url, column_id, is_top, set_top_time, is_carousel, set_carousel_time, is_headlines, set_headlines_time, publisher_id, real_pub_time, real_reading_count, extra
+        from news
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectNewsWithColumn" resultMap="ResultMapWithColumn">
+        select *
+        from news
+        ${ew.customSqlSegment}
+    </select>
+</mapper>
