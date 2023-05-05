@@ -1,9 +1,9 @@
 package com.peng.news.component;
 
+import com.peng.news.util.StringUtils;
 import com.peng.news.model.vo.ResourceVO;
 import com.peng.news.model.vo.RoleVO;
 import com.peng.news.service.ResourceService;
-import com.peng.news.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/23 17:15
  */

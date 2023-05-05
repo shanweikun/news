@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/23 16:33
  */
@@ -34,17 +34,17 @@ public class FrontendIndexServiceImpl implements FrontendIndexService {
     }
 
     @Override
-    public NewsPO getHeadLines() {
+    public List<NewsPO> getHeadLines() {
         QueryWrapper<NewsPO> queryWrapper = new QueryWrapper<>();
         wrapNecessaryConditionForQueryNews(queryWrapper);
         queryWrapper.eq("is_headlines", true);
         queryWrapper.orderByDesc("set_headlines_time");
 
         queryWrapper.select("id", "title");
-
-        IPage<NewsPO> pageObj = new Page<>(1, 1);
-        IPage<NewsPO> selectPage = newsMapper.selectPage(pageObj, queryWrapper);
-        return selectPage.getRecords().get(0);
+        List<NewsPO> newsPOS = newsMapper.selectList(queryWrapper);
+//        IPage<NewsPO> pageObj = new Page<>(1, 1);
+//        IPage<NewsPO> selectPage = newsMapper.selectPage(pageObj, queryWrapper);
+        return newsPOS;
     }
 
     @Override

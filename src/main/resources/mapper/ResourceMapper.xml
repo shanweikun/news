@@ -28,7 +28,7 @@
     </resultMap>
 
     <resultMap id="ResultMapWithRoles" type="ResourceVO" extends="BaseResultMap">
-<!--        <collection property="roles" ofType="RoleVO" column="id" select="com.peng.news.mapper.RoleMapper.getRolesByResourceId"/>-->
+<!--        <collection property="roles" ofType="RoleVO" column="id" select="RoleMapper.getRolesByResourceId"/>-->
         <collection property="roles" ofType="RoleVO">
             <id property="id" column="role_id"/>
             <result property="nameEn" column="role_name"/>

@@ -1,7 +1,7 @@
 package com.peng.news.service;
 
-import com.peng.news.model.CustomizedPage;
 import com.peng.news.model.po.UserPO;
+import com.peng.news.model.CustomizedPage;
 import com.peng.news.model.paramBean.QueryUserBean;
 import com.peng.news.model.vo.ResourceVO;
 import com.peng.news.model.vo.UserVO;
@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import java.util.List;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/23 14:10
  */
@@ -41,7 +41,7 @@ public interface UserService extends UserDetailsService {
 
     boolean updatePersonalPassword(String password);
 
-    boolean addUser(UserPO userPO);
+    int addUser(UserPO userPO);
 
     boolean delUser(Integer userId);
 

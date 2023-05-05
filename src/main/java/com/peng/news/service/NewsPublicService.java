@@ -4,7 +4,7 @@ import com.peng.news.model.po.NewsPO;
 
 /**
  * 新闻管理的公共服务
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/17 10:26
  */

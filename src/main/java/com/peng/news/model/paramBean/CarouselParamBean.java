@@ -7,7 +7,7 @@ import lombok.Data;
 
 /**
  * 封装设置轮播的参数
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/19 17:46
  */

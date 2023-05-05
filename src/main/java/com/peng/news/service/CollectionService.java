@@ -2,6 +2,7 @@ package com.peng.news.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.peng.news.model.po.CollectionPO;
+import com.peng.news.model.vo.CollectionVO;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface CollectionService extends IService<CollectionPO> {
      * 用户查看自己收藏列表
      * @return
      */
-    List<CollectionPO> listCollectionPO();
+    List<CollectionVO> listCollectionPO();
 
     /**
      * 添加收藏
@@ -27,6 +28,6 @@ public interface CollectionService extends IService<CollectionPO> {
      * @param ids
      * @return
      */
-    List<Integer> delete(List<Integer> ids);
+    Integer delete(Integer id);
 
 }

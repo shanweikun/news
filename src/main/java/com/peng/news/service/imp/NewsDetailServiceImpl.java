@@ -6,6 +6,7 @@ import com.peng.news.model.enums.NewsStatus;
 import com.peng.news.model.po.NewsPO;
 import com.peng.news.model.vo.NewsVO;
 import com.peng.news.service.AsyncTaskService;
+import com.peng.news.service.CommentService;
 import com.peng.news.service.NewsDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,9 @@ public class NewsDetailServiceImpl implements NewsDetailService {
     @Autowired
     AsyncTaskService asyncTaskService;
 
+    @Autowired
+    private CommentService commentService;
+
     @Override
     public NewsVO getOneNews(Integer newsId) {
         QueryWrapper<NewsPO> queryWrapper = new QueryWrapper<>();
@@ -38,7 +42,7 @@ public class NewsDetailServiceImpl implements NewsDetailService {
         if(newsVO.getColumn() == null) {
             throw new RuntimeException("异常新闻，没有指定新闻栏目或所属栏目不存在或栏目未开启！");
         }
-
+//        newsVO.setCommentPOS(commentService.selectByNewsId(newsId));
         //增加阅读量
         asyncTaskService.increaseReadingCount(newsId);
 

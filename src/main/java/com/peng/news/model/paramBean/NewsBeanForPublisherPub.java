@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 
 /**
  * 封装发布员发布新闻传递的参数
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/17 15:34
  */

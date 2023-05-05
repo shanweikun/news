@@ -1,12 +1,12 @@
 package com.peng.news.service;
 
+import com.peng.news.model.vo.NewsVO;
 import com.peng.news.model.CustomizedPage;
 import com.peng.news.model.paramBean.CarouselParamBean;
 import com.peng.news.model.paramBean.NewsBeanForPublisherPub;
 import com.peng.news.model.paramBean.QueryPublishedNewsBeanForPublisher;
 import com.peng.news.model.paramBean.QueryUnpublishedNewsBeanForPublisher;
 import com.peng.news.model.po.NewsPO;
-import com.peng.news.model.vo.NewsVO;
 
 /**
  * 发布员新闻管理服务

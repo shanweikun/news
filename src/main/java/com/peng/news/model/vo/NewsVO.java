@@ -1,8 +1,8 @@
 package com.peng.news.model.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.peng.news.model.enums.NewsStatus;
 import com.peng.news.model.po.UserPO;
+import com.peng.news.model.enums.NewsStatus;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -193,4 +193,9 @@ public class NewsVO {
      * 额外信息，以JSON字符串形式存储
      */
     String extra;
+
+//    /**
+//     * 新闻下属评论
+//     */
+//    List<CommentPO> commentPOS;
 }

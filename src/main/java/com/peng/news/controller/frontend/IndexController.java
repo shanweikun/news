@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * 门户网站首页的接口
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/23 16:27
  */
@@ -43,12 +43,12 @@ public class IndexController {
      */
     @ApiOperation(value = "查询新闻头条")
     @GetMapping("/headlines")
-    public Result<NewsPO> getHeadLines(){
+    public Result getHeadLines(){
         return Result.success(frontendIndexService.getHeadLines());
     }
 
     /**
-     * 查询轮播新闻
+     * 查询轮播新闻 2
      * @amount 获取轮播新闻的数量
      * @return
      */
@@ -56,5 +56,13 @@ public class IndexController {
     @GetMapping("/carouselNews")
     public Result<List<NewsPO>> carouselNewsList(Integer amount) {
         return Result.success(frontendIndexService.carouselNewsList(amount));
+    }
+    /**
+     * 查询热点新闻推荐
+     */
+    @ApiOperation("新闻推荐")
+    @GetMapping("/recommendNews")
+    public Result<List<NewsPO>> recommendNews() {
+        return Result.fail("");
     }
 }

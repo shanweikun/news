@@ -1,7 +1,7 @@
 package com.peng.news.model.dto;
 
-import com.peng.news.model.CustomizedPage;
 import com.peng.news.model.po.NewsPO;
+import com.peng.news.model.CustomizedPage;
 import com.peng.news.model.vo.NewsColumnVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -9,7 +9,7 @@ import lombok.Data;
 
 /**
  * 封装新闻列表
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/23 19:42
  */

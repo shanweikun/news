@@ -1,5 +1,7 @@
 package com.peng.news.controller.management;
 
+import com.peng.news.model.po.UserPO;
+import com.peng.news.util.DateTimeFormatUtils;
 import com.peng.news.model.CustomizedPage;
 import com.peng.news.model.Result;
 import com.peng.news.model.enums.NewsStatus;
@@ -8,13 +10,11 @@ import com.peng.news.model.paramBean.NewsBeanForPublisherPub;
 import com.peng.news.model.paramBean.QueryPublishedNewsBeanForPublisher;
 import com.peng.news.model.paramBean.QueryUnpublishedNewsBeanForPublisher;
 import com.peng.news.model.po.NewsPO;
-import com.peng.news.model.po.UserPO;
 import com.peng.news.model.vo.NewsColumnVO;
 import com.peng.news.model.vo.NewsVO;
 import com.peng.news.service.NewsColumnService;
 import com.peng.news.service.NewsServiceForPublisher;
 import com.peng.news.service.UserService;
-import com.peng.news.util.DateTimeFormatUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * 新闻发布相关接口
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/24 10:44
  */

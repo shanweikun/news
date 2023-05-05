@@ -1,10 +1,10 @@
 package com.peng.news.service.imp;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.peng.news.service.NewsPublicService;
 import com.peng.news.mapper.NewsMapper;
 import com.peng.news.model.enums.NewsStatus;
 import com.peng.news.model.po.NewsPO;
-import com.peng.news.service.NewsPublicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +38,7 @@ public class NewsPublicServiceImpl implements NewsPublicService {
         QueryWrapper<NewsPO> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("id", newsId).ne("news_status", NewsStatus.DRAFT.getCode());
 
-        if(newsMapper.selectCount(queryWrapper) == 0) {
+        if(newsMapper.selectCount(queryWrapper).intValue() == 0) {
             throw new RuntimeException("新闻不存在，加载失败！");
         }
     }

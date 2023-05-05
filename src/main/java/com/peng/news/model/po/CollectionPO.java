@@ -26,4 +26,6 @@ public class CollectionPO {
     Integer userId;
 
     Date createTime;
+
+    private Integer columnId;
 }

@@ -1,16 +1,16 @@
 package com.peng.news.service;
 
+import com.peng.news.model.vo.NewsVO;
 import com.peng.news.model.CustomizedPage;
 import com.peng.news.model.dto.ReModificationInfoDTO;
 import com.peng.news.model.dto.ReviewFailInfoDTO;
 import com.peng.news.model.paramBean.NewsBeanForEditorSave;
 import com.peng.news.model.paramBean.QueryNewsBeanForEditor;
 import com.peng.news.model.po.NewsPO;
-import com.peng.news.model.vo.NewsVO;
 
 /**
  * 编辑人员的新闻管理服务。编辑，即具有新闻中转站这个菜单的权限的用户
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/14 15:17
  */

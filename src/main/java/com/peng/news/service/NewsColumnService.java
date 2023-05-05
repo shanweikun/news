@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 新闻栏目服务
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/9 12:43
  */

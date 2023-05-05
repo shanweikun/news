@@ -1,7 +1,7 @@
 package com.peng.news.model.paramBean;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/16 0:03
  */

@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 门户网站的新闻列表服务
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/23 19:46
  */

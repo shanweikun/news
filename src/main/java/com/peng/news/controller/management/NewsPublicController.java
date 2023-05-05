@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 新闻管理的公共操作接口
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/24 10:36
  */

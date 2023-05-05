@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * 封装审核结果参数
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/16 11:30
  */

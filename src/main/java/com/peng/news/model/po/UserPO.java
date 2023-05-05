@@ -13,7 +13,7 @@ import java.sql.Timestamp;
 @Data
 public class UserPO {
 
-    @TableId(type = IdType.AUTO)
+    @TableId (value = "id", type = IdType.AUTO)
     Integer id;
 
     String username;

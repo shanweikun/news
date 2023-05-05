@@ -1,7 +1,7 @@
 package com.peng.news.util;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/24 20:17
  */

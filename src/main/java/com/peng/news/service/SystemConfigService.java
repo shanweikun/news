@@ -3,7 +3,7 @@ package com.peng.news.service;
 import com.peng.news.model.vo.SystemConfigVO;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/25 21:08
  */

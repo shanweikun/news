@@ -1,8 +1,8 @@
 package com.peng.news.controller.management;
 
+import com.peng.news.service.NewsColumnService;
 import com.peng.news.model.Result;
 import com.peng.news.model.vo.NewsColumnVO;
-import com.peng.news.service.NewsColumnService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * 新闻栏目管理的接口
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/24 10:35
  */

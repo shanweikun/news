@@ -3,19 +3,19 @@ package com.peng.news.service.imp;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.peng.news.mapper.UserMapper;
+import com.peng.news.model.po.UserPO;
+import com.peng.news.util.StringUtils;
 import com.peng.news.mapper.ResourceMapper;
 import com.peng.news.mapper.RoleMapper;
-import com.peng.news.mapper.UserMapper;
 import com.peng.news.mapper.UserRoleMapper;
 import com.peng.news.model.CustomizedPage;
 import com.peng.news.model.po.RolePO;
-import com.peng.news.model.po.UserPO;
 import com.peng.news.model.po.UserRolePO;
 import com.peng.news.model.paramBean.QueryUserBean;
 import com.peng.news.model.vo.ResourceVO;
 import com.peng.news.model.vo.UserVO;
 import com.peng.news.service.UserService;
-import com.peng.news.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,7 +30,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/23 14:11
  */
@@ -113,7 +113,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean addUser(UserPO userPO) {
+    public int addUser(UserPO userPO) {
         //格式化并且校验信息
         formatAndValidateForAddUser(userPO);
 
@@ -124,8 +124,8 @@ public class UserServiceImpl implements UserService {
         userPO.setDeleted(false);
         userPO.setCreateTime(null);
         userPO.setUpdateTime(null);
-        userMapper.insert(userPO);
-        return true;
+        int insert = userMapper.insert(userPO);
+        return insert;
     }
 
     /**
@@ -206,10 +206,11 @@ public class UserServiceImpl implements UserService {
     public boolean setRolesForUser(Integer userId, Integer[] roleIds) {
         assertUserExists(userId);
         //去重
-        if(isAdmin(userId) || ( roleIds.length > 0 && roleMapper.selectCount(new QueryWrapper<RolePO>().in("id", roleIds).eq("is_system_admin", true)) > 0 )){
-            throw new RuntimeException("不允许修改系统管理员的配置或设置为系统管理员！");
+        if (!(roleIds.length ==1 && roleIds[0]==10)) {
+            if (isAdmin(userId) || (roleIds.length > 0 && roleMapper.selectCount(new QueryWrapper<RolePO>().in("id", roleIds).eq("is_system_admin", true)) > 0)) {
+                throw new RuntimeException("不允许修改系统管理员的配置或设置为系统管理员！");
+            }
         }
-
         if(roleIds.length > 0){
             Set<Integer> roleIdSet = Arrays.stream(roleIds).collect(Collectors.toSet());
             QueryWrapper<RolePO> queryWrapper = new QueryWrapper<>();

@@ -7,7 +7,7 @@ import com.peng.news.model.vo.ResourceVO;
 import java.util.List;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/23 21:08
  */

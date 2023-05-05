@@ -2,7 +2,7 @@ package com.peng.news.model.paramBean;
 
 /**
  * 封装单字段排序规则
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/18 21:33
  */

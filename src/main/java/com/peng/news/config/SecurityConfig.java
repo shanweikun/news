@@ -1,11 +1,11 @@
 package com.peng.news.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.peng.news.component.CustomizedAccessDecisionManager;
 import com.peng.news.component.CustomizedSecurityMetadataSource;
+import com.peng.news.service.UserService;
+import com.peng.news.component.CustomizedAccessDecisionManager;
 import com.peng.news.model.Result;
 import com.peng.news.model.vo.UserVO;
-import com.peng.news.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -86,6 +86,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/hello/admin").hasRole("admin")
                     .antMatchers("/hello/editor").hasRole("editor")
                     .antMatchers("/hello/deliverer").hasRole("deliverer")
+//                    .antMatchers("/management/user/").permitAll()
                     .anyRequest()
                     .permitAll()
                     .and()

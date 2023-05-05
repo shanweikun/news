@@ -4,7 +4,7 @@ import com.peng.news.model.vo.UserVO;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/12 21:51
  */

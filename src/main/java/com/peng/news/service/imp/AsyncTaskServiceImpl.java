@@ -5,15 +5,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.peng.news.service.AsyncTaskService;
 import com.peng.news.mapper.NewsMapper;
 import com.peng.news.model.po.NewsPO;
-import com.peng.news.service.AsyncTaskService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/26 21:48
  */

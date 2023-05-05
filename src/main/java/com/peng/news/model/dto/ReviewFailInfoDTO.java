@@ -1,14 +1,13 @@
 package com.peng.news.model.dto;
 
 import com.peng.news.model.po.UserPO;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
  * 封装审核失败相关信息
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/15 14:46
  */

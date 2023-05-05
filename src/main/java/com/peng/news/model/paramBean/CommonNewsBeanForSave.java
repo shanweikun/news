@@ -6,7 +6,7 @@ import lombok.Data;
 
 /**
  * 为传稿人、编辑和审核人员保存新闻（创建或更新）准备的公共bean
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/14 14:45
  */

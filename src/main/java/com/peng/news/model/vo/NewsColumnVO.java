@@ -1,14 +1,12 @@
 package com.peng.news.model.vo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.peng.news.model.po.NewsColumnPO;
 import lombok.Data;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/9 12:36
  */

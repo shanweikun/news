@@ -1,30 +1,37 @@
 package com.peng.news.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.peng.news.model.po.CollectionPO;
 import com.peng.news.model.po.CommentPO;
+import com.peng.news.model.vo.CommentVO;
 
 import java.util.List;
 
 public interface CommentService extends IService<CommentPO> {
 
     /**
-     * 用户查看自己收藏列表
+     * 用户查看自己评论列表
      * @return
      */
-    List<CommentPO> listCommentService();
+    List<CommentVO> listCommentService();
 
     /**
-     * 添加收藏
+     * 添加评论
      * @param collectionPO
      * @return
      */
     CommentPO add(CommentPO collectionPO);
 
     /**
-     * 删除收藏
+     * 删除评论
      * @param ids
      * @return
      */
-    List<Integer> delete(List<Integer> ids);
+    Integer delete(Integer id);
+
+    /**
+     * 根据新闻id查询评论
+     * @param newsId
+     * @return
+     */
+    List<CommentVO> selectByNewsId(Integer newsId);
 }

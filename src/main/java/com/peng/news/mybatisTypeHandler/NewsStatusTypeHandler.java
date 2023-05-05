@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  * 处理NewsStatus的类型处理器
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/14 17:50
  */

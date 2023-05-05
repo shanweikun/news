@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * 封装审核人员查询新闻的条件参数
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/15 20:42
  */

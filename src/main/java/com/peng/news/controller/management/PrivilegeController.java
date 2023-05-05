@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * 权限管理相关接口
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/24 10:33
  */

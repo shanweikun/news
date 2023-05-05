@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * 撰写新闻菜单相关接口，也就是传稿人用户能够访问的接口
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/24 10:38
  */

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.peng.news.util.StringUtils;
 import com.peng.news.mapper.NewsColumnMapper;
 import com.peng.news.mapper.NewsMapper;
 import com.peng.news.model.enums.NewsStatus;
@@ -11,7 +12,6 @@ import com.peng.news.model.po.NewsColumnPO;
 import com.peng.news.model.po.NewsPO;
 import com.peng.news.model.vo.NewsColumnVO;
 import com.peng.news.service.NewsColumnService;
-import com.peng.news.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/9 12:43
  */
@@ -176,6 +176,7 @@ public class NewsColumnServiceImpl extends ServiceImpl<NewsColumnMapper,NewsColu
 
         //更新enabled
         NewsColumnPO newsColumnPO = new NewsColumnPO();
+        newsColumnPO.setId(newsColId);
         newsColumnPO.setEnabled(enabled);
         super.updateById(newsColumnPO);
 //        newsColumnMapper.update(null, new UpdateWrapper<NewsColumnPO>().eq("id", newsColId).set("enabled", enabled));

@@ -3,16 +3,16 @@ package com.peng.news.service.imp;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.peng.news.service.SearchService;
 import com.peng.news.mapper.NewsMapper;
 import com.peng.news.model.CustomizedPage;
 import com.peng.news.model.enums.NewsStatus;
 import com.peng.news.model.po.NewsPO;
-import com.peng.news.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/26 20:11
  */

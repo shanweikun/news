@@ -6,7 +6,7 @@ import com.peng.news.model.po.RoleResourcePO;
 import java.util.List;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/25 20:17
  */

@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 
 /**
  * 为传稿人保存新闻准备的bean
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/12 21:15
  */

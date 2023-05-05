@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.peng.news.service.NewsListService;
 import com.peng.news.mapper.NewsColumnMapper;
 import com.peng.news.mapper.NewsMapper;
 import com.peng.news.model.CustomizedPage;
@@ -12,14 +13,13 @@ import com.peng.news.model.enums.NewsStatus;
 import com.peng.news.model.po.NewsColumnPO;
 import com.peng.news.model.po.NewsPO;
 import com.peng.news.model.vo.NewsColumnVO;
-import com.peng.news.service.NewsListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/23 19:47
  */

@@ -2,7 +2,6 @@ package com.peng.news.controller.management;
 
 import com.peng.news.model.CustomizedPage;
 import com.peng.news.model.Result;
-import com.peng.news.model.po.UserPO;
 import com.peng.news.model.paramBean.QueryUserBean;
 import com.peng.news.model.vo.RoleVO;
 import com.peng.news.model.vo.UserVO;
@@ -17,7 +16,7 @@ import java.util.List;
 
 /**
  * 用户管理相关接口
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/3/24 10:32
  */
@@ -49,17 +48,17 @@ public class UserController {
         return Result.success(userService.userList(page, pageSize, queryUserBean));
     }
 
-    /**
-     * 添加用户
-     * @param userPO
-     * @return
-     */
-    @ApiOperation("添加用户")
-    @PostMapping("/")
-    public Result addUser(@RequestBody UserPO userPO){
-        userService.addUser(userPO);
-        return Result.success("添加成功！");
-    }
+//    /**
+//     * 添加用户
+//     * @param userPO
+//     * @return
+//     */
+//    @ApiOperation("添加用户")
+//    @PostMapping("/register")
+//    public Result addUser(@RequestBody UserPO userPO){
+//        userService.addUser(userPO);
+//        return Result.success("添加成功！");
+//    }
 
     /**
      * 删除用户

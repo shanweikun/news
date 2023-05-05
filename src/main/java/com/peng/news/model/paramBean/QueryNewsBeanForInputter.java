@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * 封装传稿人查询草稿的条件参数的bean
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/13 9:23
  */

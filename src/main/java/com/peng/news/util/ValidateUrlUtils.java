@@ -2,7 +2,7 @@ package com.peng.news.util;
 
 /**
  * 验证url工具类
- * @author PENG
+ * @author shan
  * @version 1.0
  * @date 2021/4/17 16:07
  */
