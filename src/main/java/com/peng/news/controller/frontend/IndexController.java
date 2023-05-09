@@ -40,7 +40,7 @@ public class IndexController {
     /**
      * 查询新闻头条
      * @return
-     */
+     */ 
     @ApiOperation(value = "查询新闻头条")
     @GetMapping("/headlines")
     public Result getHeadLines(){
@@ -63,6 +63,7 @@ public class IndexController {
     @ApiOperation("新闻推荐")
     @GetMapping("/recommendNews")
     public Result<List<NewsPO>> recommendNews() {
-        return Result.fail("");
+        List<NewsPO> newsPOS = frontendIndexService.recommendHotNews();
+        return Result.success(newsPOS);
     }
 }

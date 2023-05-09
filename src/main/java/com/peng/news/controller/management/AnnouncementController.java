@@ -18,6 +18,7 @@ public class AnnouncementController {
 
     @GetMapping("/hello")
     public String hello(){
+
         return this.getClass().getName() + " hello";
     }
 }

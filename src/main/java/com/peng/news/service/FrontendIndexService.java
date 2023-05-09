@@ -23,4 +23,6 @@ public interface FrontendIndexService {
     List<NewsPO> getHeadLines();
 
     List<NewsPO> carouselNewsList(Integer amount);
+
+    List<NewsPO> recommendHotNews();
 }

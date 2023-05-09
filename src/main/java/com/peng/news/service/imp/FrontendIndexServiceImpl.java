@@ -3,15 +3,26 @@ package com.peng.news.service.imp;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.peng.news.mapper.CollectionMapper;
+import com.peng.news.mapper.CommentMapper;
 import com.peng.news.mapper.NewsColumnMapper;
 import com.peng.news.mapper.NewsMapper;
 import com.peng.news.model.enums.NewsStatus;
+import com.peng.news.model.po.CollectionPO;
+import com.peng.news.model.po.CommentPO;
 import com.peng.news.model.po.NewsPO;
 import com.peng.news.model.vo.NewsColumnVO;
 import com.peng.news.service.FrontendIndexService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.Temporal;
 import java.util.List;
 
 /**
@@ -25,6 +36,11 @@ public class FrontendIndexServiceImpl implements FrontendIndexService {
     @Autowired
     NewsColumnMapper newsColumnMapper;
 
+    @Autowired
+    CollectionMapper collectionMapper;
+
+    @Autowired
+    CommentMapper commentMapper;
     @Autowired
     NewsMapper newsMapper;
 
@@ -62,6 +78,26 @@ public class FrontendIndexServiceImpl implements FrontendIndexService {
         IPage<NewsPO> selectPage = newsMapper.selectPage(page, queryWrapper);
 
         return selectPage.getRecords();
+    }
+
+    @Override
+    public List<NewsPO> recommendHotNews() {
+        QueryWrapper<NewsPO> newsPOQueryWrapper = new QueryWrapper<>();
+        List<NewsPO> newsPOS = newsMapper.selectList(newsPOQueryWrapper);
+        for (NewsPO newsPO : newsPOS) {
+            if (newsPO.getContent()!=null) {
+                Timestamp now = new Timestamp(System.currentTimeMillis());
+                long timeDiff = now.getTime() - newsPO.getCreateTime().getTime();
+                double hoursAgo = timeDiff / (1000 * 60 * 60);
+                QueryWrapper<CommentPO> commentPOQueryWrapper = new QueryWrapper<>();
+                commentPOQueryWrapper.eq("news_id",newsPO.getId());
+                List<CommentPO> commentPOS = commentMapper.selectList(commentPOQueryWrapper);
+                double score = newsPO.getRealReadingCount() * 0.4 + commentPOS.size() * 0.3 + (24 - Math.min(hoursAgo, 240)) * 0.3;
+                newsPO.setScore(score);
+            }else newsPO.setScore(-100000000);
+        }
+        newsPOS.sort((n1, n2) -> Double.compare(n2.getScore(), n1.getScore()));
+        return newsPOS.subList(0, Math.min(10, newsPOS.size()));
     }
 
 

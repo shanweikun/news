@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import javax.persistence.Transient;
 import java.sql.Timestamp;
 
 /**
@@ -192,4 +193,7 @@ public class NewsPO {
      * 额外信息，以JSON字符串形式存储
      */
     String extra;
+
+    @Transient
+    double score;
 }
