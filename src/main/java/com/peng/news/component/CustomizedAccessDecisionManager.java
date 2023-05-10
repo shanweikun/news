@@ -19,6 +19,7 @@ import java.util.Collection;
 @Component
 public class CustomizedAccessDecisionManager implements AccessDecisionManager {
 
+
     /**
      * 知道了访问接口需要哪些角色，也知道了用户具有哪些角色；
      * 就可以自定义规则进行权限认证！

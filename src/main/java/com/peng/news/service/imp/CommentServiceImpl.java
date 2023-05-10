@@ -13,6 +13,8 @@ import com.peng.news.service.CommentService;
 import com.peng.news.util.UserUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -28,6 +30,8 @@ import java.util.List;
 
 @Service
 public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentPO> implements CommentService {
+
+
 
 
     @Autowired
@@ -68,6 +72,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentPO> im
         collectionPO.setCreateTime(new Date());
         collectionPO.setUserId(id);
         if (super.save(collectionPO)) {
+//            redisTemplate.delete("com.peng.news.model.vo.CommentVO::" + collectionPO.getNewsId());
             return collectionPO;
         }
         return null;
@@ -75,12 +80,17 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentPO> im
 
     /**
      * 删除评论
-     * @param ids
+     * @param
      * @return
      */
     public Integer delete(Integer id) {
-        if (super.removeById(id)) {
-            return id;
+        CommentPO commentPO = super.getById(id);
+        if (commentPO!=null) {
+            if (super.removeById(id)) {
+
+//                redisTemplate.delete("com.peng.news.model.vo.CommentVO::" + commentPO.getNewsId());
+                return id;
+            }
         }
         return null;
     }
@@ -91,6 +101,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentPO> im
      * @return
      */
     @Override
+//    @Cacheable(cacheNames = "com.peng.news.model.vo.CommentVO",key = "#newsId")
     public List<CommentVO> selectByNewsId(Integer newsId) {
         LambdaQueryWrapper<CommentPO> lambda = new QueryWrapper<CommentPO>().lambda()
                 .eq(newsId!=null,CommentPO::getNewsId,newsId);

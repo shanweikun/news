@@ -3,6 +3,7 @@ package com.peng.news.model.vo;
 import com.peng.news.model.po.NewsPO;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Date;
  */
 
 @Data
-public class CommentVO {
+public class CommentVO implements Serializable {
     Integer id;
 
     String content;

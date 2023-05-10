@@ -14,6 +14,7 @@ import com.peng.news.model.po.NewsColumnPO;
 import com.peng.news.model.po.NewsPO;
 import com.peng.news.model.vo.NewsColumnVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -84,7 +85,9 @@ public class NewsListServiceImpl implements NewsListService {
         return newsListDTO;
     }
 
+
     @Override
+//    @Cacheable(cacheNames="com.peng.news.model.vo.columnVO",key = "#colId")
     public List<NewsColumnVO> subColList(int colId) {
         if(newsColumnMapper.assertColExistAndEnabled(colId) == 0) {
             //栏目不存在或没有开启

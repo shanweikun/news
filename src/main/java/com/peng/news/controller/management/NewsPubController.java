@@ -18,6 +18,7 @@ import com.peng.news.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,6 +43,8 @@ public class NewsPubController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    private RedisTemplate<String,Object> redisTemplate;
     @ApiOperation("某功能")
     @GetMapping("/hello")
     public String hello(){
@@ -158,6 +161,7 @@ public class NewsPubController {
             //设为轮播的话，就返回设为轮播的时间
             result.setData(DateTimeFormatUtils.format(newsPO.getSetCarouselTime().toLocalDateTime()));
         }
+        redisTemplate.delete("com.peng.news.model.vo.NewsPO::carouselNewsList");
         return result;
     }
 
@@ -173,9 +177,11 @@ public class NewsPubController {
         NewsPO newsPO = newsServiceForPublisher.headlinesManage(newsId, tag);
         Result<String> result = Result.success(tag == 1 ? "成功设为头条！" : "成功取消设为头条！");
         if(tag == 1) {
+
             //设为头条的话，就返回设为头条的时间
             result.setData(DateTimeFormatUtils.format(newsPO.getSetHeadlinesTime().toLocalDateTime()));
         }
+        redisTemplate.delete("com.peng.news.model.vo.NewsPO::getHeadLines");
         return result;
     }
 
@@ -194,6 +200,7 @@ public class NewsPubController {
             //设置置顶的话，就返回置顶时间
             result.setData(DateTimeFormatUtils.format(newsPO.getSetTopTime().toLocalDateTime()));
         }
+
         return result;
     }
 }

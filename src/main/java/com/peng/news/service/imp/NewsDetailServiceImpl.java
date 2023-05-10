@@ -9,6 +9,7 @@ import com.peng.news.service.AsyncTaskService;
 import com.peng.news.service.CommentService;
 import com.peng.news.service.NewsDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,6 +30,7 @@ public class NewsDetailServiceImpl implements NewsDetailService {
     private CommentService commentService;
 
     @Override
+//    @Cacheable(cacheNames = "com.peng.news.model.vo.NewsVO",key = "#newsId")
     public NewsVO getOneNews(Integer newsId) {
         QueryWrapper<NewsPO> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("id", newsId).eq("news_status", NewsStatus.PUBLISHED.getCode());

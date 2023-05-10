@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Transient;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -16,8 +17,9 @@ import java.sql.Timestamp;
  */
 @Data
 @TableName("news")
-public class NewsPO {
+public class NewsPO implements Serializable {
 
+    private static final long serialVersionUID = -3911255650485738676L;
     @TableId(type = IdType.AUTO)
     Integer id;
 
@@ -188,6 +190,47 @@ public class NewsPO {
      * 新闻实际阅读量
      */
     Integer realReadingCount;
+
+    public NewsPO(){
+
+    }
+    public NewsPO(Integer id, String title, String articleFragmentForShow, String content, Integer columnId, String imgSource, String articleSource, Integer newsStatus, Boolean isCarousel, Timestamp setCarouselTime, Boolean isHeadlines, Timestamp setHeadlinesTime, Boolean isImageNews, Boolean isTop, Timestamp setTopTime, String externalUrl, Integer inputterId, Timestamp createTime, Timestamp completeInputTime, String editors, String reviewers, Integer submitterId, Timestamp submitTime, Integer latestEditorId, Timestamp latestEditTime, Integer currentReviewEpoch, Timestamp previousEpochReviewPassTime, Integer publisherId, Timestamp realPubTime, Timestamp showPubTime, Integer initReadingCount, String imgForShowOnNewsList, Integer realReadingCount, String extra, double score) {
+        this.id = id;
+        this.title = title;
+        this.articleFragmentForShow = articleFragmentForShow;
+        this.content = content;
+        this.columnId = columnId;
+        this.imgSource = imgSource;
+        this.articleSource = articleSource;
+        this.newsStatus = newsStatus;
+        this.isCarousel = isCarousel;
+        this.setCarouselTime = setCarouselTime;
+        this.isHeadlines = isHeadlines;
+        this.setHeadlinesTime = setHeadlinesTime;
+        this.isImageNews = isImageNews;
+        this.isTop = isTop;
+        this.setTopTime = setTopTime;
+        this.externalUrl = externalUrl;
+        this.inputterId = inputterId;
+        this.createTime = createTime;
+        this.completeInputTime = completeInputTime;
+        this.editors = editors;
+        this.reviewers = reviewers;
+        this.submitterId = submitterId;
+        this.submitTime = submitTime;
+        this.latestEditorId = latestEditorId;
+        this.latestEditTime = latestEditTime;
+        this.currentReviewEpoch = currentReviewEpoch;
+        this.previousEpochReviewPassTime = previousEpochReviewPassTime;
+        this.publisherId = publisherId;
+        this.realPubTime = realPubTime;
+        this.showPubTime = showPubTime;
+        this.initReadingCount = initReadingCount;
+        this.imgForShowOnNewsList = imgForShowOnNewsList;
+        this.realReadingCount = realReadingCount;
+        this.extra = extra;
+        this.score = score;
+    }
 
     /**
      * 额外信息，以JSON字符串形式存储

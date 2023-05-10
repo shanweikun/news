@@ -20,6 +20,7 @@ import com.peng.news.model.vo.NewsVO;
 import com.peng.news.service.NewsServiceForPublisher;
 import com.peng.news.util.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -196,6 +197,8 @@ public class NewsServiceForPublisherImpl implements NewsServiceForPublisher {
         IPage<NewsVO> selectPage = newsMapper.selectPublishedNewsList(pageObj, queryWrapper);
         return CustomizedPage.fromIPage(selectPage);
     }
+    @Autowired
+    private RedisTemplate<String,Object> redisTemplate;
 
     @Override
     public boolean revokePub(int newsId) {
@@ -217,6 +220,9 @@ public class NewsServiceForPublisherImpl implements NewsServiceForPublisher {
         updateWrapper.set("img_for_show_on_news_list", null);
         //执行更新
         newsMapper.update(null, updateWrapper);
+        //删除缓存
+        redisTemplate.delete("com.peng.news.model.vo.NewsPO::carouselNewsList");
+        redisTemplate.delete("com.peng.news.model.vo.NewsPO::getHeadLines");
         return true;
     }
 

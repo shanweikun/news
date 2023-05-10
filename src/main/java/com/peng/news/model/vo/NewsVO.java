@@ -5,6 +5,7 @@ import com.peng.news.model.po.UserPO;
 import com.peng.news.model.enums.NewsStatus;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
@@ -13,7 +14,7 @@ import java.sql.Timestamp;
  * @date 2021/4/12 20:41
  */
 @Data
-public class NewsVO {
+public class NewsVO implements Serializable {
     Integer id;
 
     /**

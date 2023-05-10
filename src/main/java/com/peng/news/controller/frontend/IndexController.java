@@ -32,6 +32,7 @@ public class IndexController {
      * @return
      */
     @ApiOperation(value = "查询所有开启的一级栏目，并且按菜单序号排序",notes = "获取Hello")
+
     @GetMapping("/cols")
     public Result<List<NewsColumnVO>> allEnabledOneLevelColsOrderByMenuOrder() {
         return Result.success(frontendIndexService.allEnabledOneLevelColsOrderByMenuOrder());

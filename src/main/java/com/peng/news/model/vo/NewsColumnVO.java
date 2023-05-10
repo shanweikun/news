@@ -3,6 +3,7 @@ package com.peng.news.model.vo;
 import com.peng.news.model.po.NewsColumnPO;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  * @date 2021/4/9 12:36
  */
 @Data
-public class NewsColumnVO extends NewsColumnPO {
+public class NewsColumnVO extends NewsColumnPO implements Serializable {
 //    Integer id;
 //
 //    String title;

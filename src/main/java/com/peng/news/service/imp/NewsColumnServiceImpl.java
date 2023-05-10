@@ -14,6 +14,7 @@ import com.peng.news.model.vo.NewsColumnVO;
 import com.peng.news.service.NewsColumnService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +38,9 @@ public class NewsColumnServiceImpl extends ServiceImpl<NewsColumnMapper,NewsColu
 
     @Autowired
     NewsMapper newsMapper;
+
+    @Autowired
+    private RedisTemplate<String,Object> redisTemplate;
 
     /**
      * 通过父栏目id查询所有子栏目
@@ -104,6 +108,7 @@ public class NewsColumnServiceImpl extends ServiceImpl<NewsColumnMapper,NewsColu
 
         super.removeById(newsColId);
 
+        redisTemplate.delete("com.peng.news.model.vo.NewsColumnVO::allEnabledOneLevelColsOrderByMenuOrder");
         return true;
     }
 
@@ -156,6 +161,8 @@ public class NewsColumnServiceImpl extends ServiceImpl<NewsColumnMapper,NewsColu
         //执行更新
 //        newsColumnMapper.update(null, updateWrapper);
         super.updateById(newsColumnPO);
+        redisTemplate.delete("com.peng.news.model.vo.NewsColumnVO::allEnabledOneLevelColsOrderByMenuOrder");
+
         return true;
     }
 
@@ -180,6 +187,8 @@ public class NewsColumnServiceImpl extends ServiceImpl<NewsColumnMapper,NewsColu
         newsColumnPO.setEnabled(enabled);
         super.updateById(newsColumnPO);
 //        newsColumnMapper.update(null, new UpdateWrapper<NewsColumnPO>().eq("id", newsColId).set("enabled", enabled));
+        redisTemplate.delete("com.peng.news.model.vo.NewsColumnVO::allEnabledOneLevelColsOrderByMenuOrder");
+
         return true;
     }
 
@@ -216,6 +225,7 @@ public class NewsColumnServiceImpl extends ServiceImpl<NewsColumnMapper,NewsColu
         assertNewsColExists(newsColId, NEWS_COL_NOT_EXISTS_MSG_FOR_DEL_OR_UPDATE);
         //更新show_img_on_the_right字段
         newsColumnMapper.update(null, new UpdateWrapper<NewsColumnPO>().eq("id", newsColId).set("show_img_on_the_right", status));
+        redisTemplate.delete("com.peng.news.model.vo.NewsColumnVO::allEnabledOneLevelColsOrderByMenuOrder");
         return true;
     }
 

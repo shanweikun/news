@@ -2,6 +2,7 @@ package com.peng.news.model.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -16,8 +17,10 @@ import java.util.stream.Collectors;
 /**
  * 让枚举类对象按照普通类对象的格式进行序列化。
  */
+
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum NewsStatus {
+
+public enum NewsStatus implements Serializable {
     /**
      * 草稿
      */
@@ -105,5 +108,13 @@ public enum NewsStatus {
 
     public String getName() {
         return name;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

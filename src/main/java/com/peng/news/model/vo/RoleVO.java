@@ -2,6 +2,7 @@ package com.peng.news.model.vo;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @date 2021/3/23 14:16
  */
 @Data
-public class RoleVO {
+public class RoleVO implements Serializable {
 
     Integer id;
 
