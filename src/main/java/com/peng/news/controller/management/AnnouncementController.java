@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 1.0
  * @date 2021/3/24 10:46
  */
-@Api(tags = "公共管理接口")
-@RestController
-@RequestMapping("/management/notice")
-public class AnnouncementController {
-
-    @GetMapping("/hello")
-    public String hello(){
-
-        return this.getClass().getName() + " hello";
-    }
-}
+//@Api(tags = "公共管理接口")
+//@RestController
+//@RequestMapping("/management/notice")
+//public class AnnouncementController {
+//
+//    @GetMapping("/hello")
+//    public String hello(){
+//
+//        return this.getClass().getName() + " hello";
+//    }
+//}

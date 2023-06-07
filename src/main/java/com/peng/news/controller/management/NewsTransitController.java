@@ -37,10 +37,7 @@ public class NewsTransitController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/hello")
-    public String hello(){
-        return this.getClass().getName() + " hello";
-    }
+
 
     /**
      * 分页+条件查询中转状态的新闻列表

@@ -25,10 +25,7 @@ public class NewsPublicController {
     @Autowired
     NewsPublicService newsPublicService;
 
-    @GetMapping("/hello")
-    public String hello(){
-    return this.getClass().getName() + " hello";
-}
+
 
     /**
      * 查询一个不是草稿的新闻。

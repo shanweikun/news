@@ -45,11 +45,7 @@ public class NewsPubController {
 
     @Autowired
     private RedisTemplate<String,Object> redisTemplate;
-    @ApiOperation("某功能")
-    @GetMapping("/hello")
-    public String hello(){
-        return this.getClass().getName() + " hello[Get]";
-    }
+
 
 
     /**

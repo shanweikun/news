@@ -15,7 +15,7 @@ public class SaticScheduleTask {
     @Autowired
     private RedisTemplate<String,Object> redisTemplate;
     //3.添加定时任务
-    @Scheduled(cron = "0 * */1 * * ?")
+    @Scheduled(cron = "0 0 6 * * ?")
     private void configureTasks() {
         redisTemplate.delete("com.peng.news.model.vo.NewsPO::recommendHotNews");
     }

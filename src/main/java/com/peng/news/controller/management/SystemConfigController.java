@@ -22,10 +22,6 @@ public class SystemConfigController {
     @Autowired
     SystemConfigService systemConfigService;
 
-    @GetMapping("/hello")
-    public String hello(){
-        return this.getClass().getName() + " hello";
-    }
 
     /**
      * 设置系统的审核等级

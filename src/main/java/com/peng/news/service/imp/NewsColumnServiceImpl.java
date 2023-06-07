@@ -57,7 +57,6 @@ public class NewsColumnServiceImpl extends ServiceImpl<NewsColumnMapper,NewsColu
         Object[] parents = list.toArray();
         List<Object> objects = Arrays.asList(parents);
         List<NewsColumnVO> list1 = (List)objects;
-//        return newsColumnMapper.columnListWithSettingsByParentId(parentId);
         return list1;
     }
 

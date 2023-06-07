@@ -89,19 +89,26 @@ public class FrontendIndexServiceImpl implements FrontendIndexService {
     @Override
     public List<NewsPO> recommendHotNews() {
         QueryWrapper<NewsPO> newsPOQueryWrapper = new QueryWrapper<>();
+        //获取全部新闻
         List<NewsPO> newsPOS = newsMapper.selectList(newsPOQueryWrapper);
+        //便利
         for (NewsPO newsPO : newsPOS) {
+            //新闻状态必须是已经发布的
             if (newsPO.getContent()!=null&&newsPO.getNewsStatus()==5) {
+                //计算距离当前时间的时间差
                 Timestamp now = new Timestamp(System.currentTimeMillis());
                 long timeDiff = now.getTime() - newsPO.getCreateTime().getTime();
                 double hoursAgo = timeDiff / (1000 * 60 * 60);
+                //计算评论数
                 QueryWrapper<CommentPO> commentPOQueryWrapper = new QueryWrapper<>();
                 commentPOQueryWrapper.eq("news_id",newsPO.getId());
                 List<CommentPO> commentPOS = commentMapper.selectList(commentPOQueryWrapper);
+                //通过浏览数、评论数、时间计算分数(十天之前的新闻就不以时间作为参考了）
                 double score = newsPO.getRealReadingCount() * 0.4 + commentPOS.size() * 0.3 + (24 - Math.min(hoursAgo, 240)) * 0.3;
                 newsPO.setScore(score);
             }else newsPO.setScore(-100000000);
         }
+        //通过分数进行排序
         newsPOS.sort((n1, n2) -> Double.compare(n2.getScore(), n1.getScore()));
         List<NewsPO> newsPOS1 = new ArrayList(newsPOS.subList(0, Math.min(10, newsPOS.size())));
         return newsPOS1;

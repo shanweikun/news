@@ -25,10 +25,7 @@ public class NewsUploadController {
     @Autowired
     NewsServiceForInputter newsServiceForInputter;
 
-    @GetMapping("/hello")
-    public String hello(){
-        return this.getClass().getName() + " hello";
-    }
+
 
     /**
      * 创建新闻或保存新闻，状态设为草稿或完成上传的状态

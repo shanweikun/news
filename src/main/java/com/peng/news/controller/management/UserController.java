@@ -31,10 +31,7 @@ public class UserController {
     @Autowired
     RoleService roleService;
 
-    @GetMapping("/hello")
-    public String hello(){
-        return this.getClass().getName() + " hello";
-    }
+
 
     /**
      * 分页条件查询用户列表

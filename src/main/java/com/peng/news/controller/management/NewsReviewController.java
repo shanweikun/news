@@ -35,10 +35,7 @@ public class NewsReviewController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/hello")
-    public String hello(@PathVariable int epoch){
-        return this.getClass().getName() + " hello[" + epoch + "]";
-    }
+
 
     /**
      * 查询状态为审核中 且 审核轮次为epoch的新闻列表

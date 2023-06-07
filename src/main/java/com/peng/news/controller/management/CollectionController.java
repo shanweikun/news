@@ -19,7 +19,7 @@ import java.util.List;
 
 @Api(tags = "新闻收藏接口")
 @RestController
-@RequestMapping("/collection")
+@RequestMapping("/management/collection")
 public class CollectionController {
     @Autowired
     private CollectionService collectionService;
